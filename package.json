@@ -1,0 +1,31 @@
+{
+  "name": "uabcli",
+  "version": "1.0.0",
+  "description": "UABMagic CLI",
+  "main": "index.js",
+  "bin": {
+    "uab": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "disney",
+    "uab",
+    "utilidors"
+  ],
+  "author": "Robbie Page <rob@rorpage.com>",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^5.0.0",
+    "console-table-printer": "^2.8.2",
+    "figlet": "^1.5.0",
+    "inquirer": "^8.0.0",
+    "minimist": "^1.2.5"
+  }
+}
