@@ -60,15 +60,15 @@ const run = async () => {
           columns: [
             { name: 'attractionAndSong', title: 'Song title', alignment: 'left' },
             { name: 'duration', title: 'Duration', alignment: 'left' },
-            { name: 'songID', title: 'Song ID', alignment: 'left' }
+            { name: 'id', title: 'Song ID', alignment: 'left' }
           ]
         });
 
         searchResults.map((result) => {
           resultTable.addRow({
             attractionAndSong: result.attractionAndSong,
-            duration: result.duration,
-            songID: result.songID
+            duration: result.playback.durationDisplay,
+            id: result.id
           });
         });
 
@@ -83,7 +83,7 @@ const run = async () => {
 
       const requestResults = await uab.request(requestedSongId);
 
-      if (requestResults.response === 'success') {
+      if (requestResults.success) {
         console.log(chalk.green(`Song successfully requested!`));
       } else {
         console.log(chalk.red(`An error occurred while requesting song: ${requestResults.failureReason}`));
