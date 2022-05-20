@@ -12,8 +12,12 @@ const getUABToken = async () => {
   return await uab.getTokenFromUAB();
 };
 
-const newline = () => {
-  console.log(``);
+const newline = (lines = 1) => {
+  if (lines > 0) {
+    console.log(``);
+
+    newline(lines - 1);
+  }
 }
 
 const args = arg({
@@ -99,13 +103,19 @@ const run = async () => {
         console.log(nowPlaying);
       } else {
         console.log(chalk.white(`Now playing: ${nowPlaying.schedule}`));
-        console.log(`  ${chalk.cyan(nowPlaying.attractionAndSong)} - ${nowPlaying.themeParkAndLand}`);
+        newline();
+
+        const time = `(${nowPlaying.playback.timeElapsedDisplay} / ${nowPlaying.playback.durationDisplay})`;
+
+        console.log(`  ${nowPlaying.themeParkAndLand.toUpperCase()}`);
+        console.log(`  ${chalk.cyan(nowPlaying.attractionAndSong)} ${time}`);
 
         if (nowPlaying.requestor !== '') {
-          console.log(`  Requested by: ${chalk.yellow(nowPlaying.requestor)}`);
+          newline();
+          console.log(`  Requested by ${chalk.yellow(nowPlaying.requestor)}`);
         }
 
-        newline();
+        newline(2);
 
         console.log(`Up next:`);
 
